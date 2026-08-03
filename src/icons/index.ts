@@ -23,5 +23,23 @@ export { default as IconTrashcanFill } from './assets/basic/ic-basic-trashcan-fi
 export { default as IconVideo } from './assets/basic/ic-basic-video.svg?react';
 export { default as IconX } from './assets/basic/ic-basic-x.svg?react';
 
-export { default as IconFlag } from './assets/multiColor/ic-multi-flag.svg?react';
-export { default as IconShare } from './assets/multiColor/ic-multi-share.svg?react';
+export { default as IconMultiBellBlue } from './assets/multiColor/ic-multi-bell-blue.svg?react';
+export { default as IconMultiBellOff } from './assets/multiColor/ic-multi-bell-off.svg?react';
+export { default as IconMultiBellPink } from './assets/multiColor/ic-multi-bell-pink.svg?react';
+export { default as IconMultiClipboardBlue } from './assets/multiColor/ic-multi-clipboard-blue.svg?react';
+export { default as IconMultiClipboardWhite } from './assets/multiColor/ic-multi-clipboard-white.svg?react';
+export { default as IconMultiCommentX } from './assets/multiColor/ic-multi-comment-x.svg?react';
+export { default as IconMultiDollarCircle } from './assets/multiColor/ic-multi-dollar-circle.svg?react';
+export { default as IconMultiFlag } from './assets/multiColor/ic-multi-flag.svg?react';
+export { default as IconMultiGestureHand } from './assets/multiColor/ic-multi-gesture-hand.svg?react';
+export { default as IconMultiImage } from './assets/multiColor/ic-multi-image.svg?react';
+export { default as IconMultiMassageAlert } from './assets/multiColor/ic-multi-massage-alert.svg?react';
+export { default as IconMultiPointCircle } from './assets/multiColor/ic-multi-point-circle.svg?react';
+export { default as IconMultiQuestionCircle } from './assets/multiColor/ic-multi-question-circle.svg?react';
+export { default as IconMultiSadFace } from './assets/multiColor/ic-multi-sad-face.svg?react';
+export { default as IconMultiShare } from './assets/multiColor/ic-multi-share.svg?react';
+export { default as IconMultiShieldOff } from './assets/multiColor/ic-multi-shield-off.svg?react';
+export { default as IconMultiSkull } from './assets/multiColor/ic-multi-skull.svg?react';
+export { default as IconMultiUserQuestion } from './assets/multiColor/ic-multi-user-question.svg?react';
+export { default as IconMultiVideo } from './assets/multiColor/ic-multi-video.svg?react';
+export { default as IconMultiWarningCone } from './assets/multiColor/ic-multi-warning-cone.svg?react';
