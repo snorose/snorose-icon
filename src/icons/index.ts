@@ -1,4 +1,4 @@
-export { default as IconCommentFill } from './assets/basic/ic-basic-commet-fill.svg?react';
+export { default as IconCommentFill } from './assets/basic/ic-basic-comment-fill.svg?react';
 export { default as IconPencilFill } from './assets/basic/ic-basic-pencil-fill.svg?react';
 export { default as IconTrashFill } from './assets/basic/ic-basic-trash.svg?react';
 export { default as IconUserFill } from './assets/basic/ic-basic-user.svg?react';
