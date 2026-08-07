@@ -42,6 +42,8 @@ export { default as IconChevronRight } from './assets/basic/ic-basic-chevron-rig
 export { default as IconChevronUp } from './assets/basic/ic-basic-chevron-up.svg?react';
 export { default as IconFile } from './assets/basic/ic-basic-file.svg?react';
 
+export { default as IconMultiBadgeBlue } from './assets/multi/ic-multi-badge-blue.svg?react';
+export { default as IconMultiBadgePink } from './assets/multi/ic-multi-badge-pink.svg?react';
 export { default as IconMultiBellBlue } from './assets/multi/ic-multi-bell-blue.svg?react';
 export { default as IconMultiBellOff } from './assets/multi/ic-multi-bell-off.svg?react';
 export { default as IconMultiBellPink } from './assets/multi/ic-multi-bell-pink.svg?react';
