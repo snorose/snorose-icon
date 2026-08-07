@@ -234,7 +234,7 @@ npm version 1.0.0-beta.1
 npm version prerelease --preid=beta
 ```
 
-`npm version`이 지원하는 prerelease 동작은 [npm 공식 문서](https://docs.npmjs.com/cli/v11/commands/npm-version/)에서 확인할 수 있다.
+`npm version`이 지원하는 prerelease 동작은 [npm 공식 문서](https://docs.npmjs.com/cli/v10/commands/npm-version/)에서 확인할 수 있다.
 
 `npm version`은 기본적으로 다음 작업을 수행한다.
 
