@@ -10,12 +10,11 @@ export { default as IconCommentFill } from './assets/basic/ic-basic-comment-fill
 export { default as IconEyeFill } from './assets/basic/ic-basic-eye-fill.svg?react';
 export { default as IconEye } from './assets/basic/ic-basic-eye.svg?react';
 export { default as IconGripHorizontal } from './assets/basic/ic-basic-grip-horizontal.svg?react';
-export { default as IconHamburger } from './assets/basic/ic-basic-hamburger.svg?react';
+export { default as IconHamburgerMenu } from './assets/basic/ic-basic-hamburger-menu.svg?react';
 export { default as IconHashtag } from './assets/basic/ic-basic-hashtag.svg?react';
 export { default as IconHeartFill } from './assets/basic/ic-basic-heart-fill.svg?react';
 export { default as IconHeart } from './assets/basic/ic-basic-heart.svg?react';
 export { default as IconHomeFill } from './assets/basic/ic-basic-home-fill.svg?react';
-export { default as IconHome } from './assets/basic/ic-basic-home.svg?react';
 export { default as IconImageFill } from './assets/basic/ic-basic-image-fill.svg?react';
 export { default as IconImage } from './assets/basic/ic-basic-image.svg?react';
 export { default as IconMypageFill } from './assets/basic/ic-basic-mypage-fill.svg?react';
