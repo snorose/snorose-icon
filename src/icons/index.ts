@@ -33,6 +33,15 @@ export { default as IconTextAlign } from './assets/basic/ic-basic-text-align.svg
 export { default as IconTrashcanFill } from './assets/basic/ic-basic-trashcan-fill.svg?react';
 export { default as IconVideo } from './assets/basic/ic-basic-video.svg?react';
 export { default as IconX } from './assets/basic/ic-basic-x.svg?react';
+export { default as IconBellFill } from './assets/basic/ic-basic-bell-fill.svg?react';
+export { default as IconBell } from './assets/basic/ic-basic-bell.svg?react';
+export { default as IconCheckCircle } from './assets/basic/ic-basic-check-circle.svg?react';
+export { default as IconCheck } from './assets/basic/ic-basic-check.svg?react';;
+export { default as IconChevronDown } from './assets/basic/ic-basic-chevron-down.svg?react';
+export { default as IconChevronLeft } from './assets/basic/ic-basic-chevron-left.svg?react';
+export { default as IconChevronRight } from './assets/basic/ic-basic-chevron-right.svg?react';
+export { default as IconChevronUp } from './assets/basic/ic-basic-chevron-up.svg?react';
+export { default as IconFile } from './assets/basic/ic-basic-file.svg?react';
 
 export { default as IconMultiBellBlue } from './assets/multi/ic-multi-bell-blue.svg?react';
 export { default as IconMultiBellOff } from './assets/multi/ic-multi-bell-off.svg?react';
@@ -59,3 +68,4 @@ export { default as IconMultiSkull } from './assets/multi/ic-multi-skull.svg?rea
 export { default as IconMultiUserQuestion } from './assets/multi/ic-multi-user-question.svg?react';
 export { default as IconMultiVideo } from './assets/multi/ic-multi-video.svg?react';
 export { default as IconMultiWarningCone } from './assets/multi/ic-multi-warning-cone.svg?react';
+
