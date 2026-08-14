@@ -3,5 +3,12 @@ export { default as IllustrationCalendarEmpty } from './il-calendar-empty.svg?re
 export { default as IllustrationClipboardSearch } from './il-clipboard-search.svg?react';
 export { default as IllustrationCommentEmpty } from './il-comment-empty.svg?react';
 export { default as IllustrationEmailCheck } from './il-email-check.svg?react';
+export { default as IllustrationMegaphone } from './il-megaphone.svg?react';
+export { default as IllustrationMicrophone } from './il-microphone.svg?react';
+export { default as IllustrationPadlock } from './il-padlock.svg?react';
 export { default as IllustrationPostEmpty } from './il-post-empty.svg?react';
 export { default as IllustrationScrapPostEmpty } from './il-scrap-post-empty.svg?react';
+export { default as IllustrationSnowGround } from './il-snow-ground.svg?react';
+export { default as IllustrationSnowGroundCircle } from './il-snow-ground-circle.svg?react';
+export { default as IllustrationSnowMountain } from './il-snow-mountain.svg?react';
+export { default as IllustrationSnowMountainCircle } from './il-snow-mountain-circle.svg?react';
