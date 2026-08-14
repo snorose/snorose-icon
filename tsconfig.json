@@ -1,6 +1,8 @@
 {
+  "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
     "target": "ES2022",
+    "jsx": "react-jsx",
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "allowJs": false,
@@ -10,11 +12,15 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
+    // "module": "preserve",
     "moduleResolution": "Bundler",
+    "moduleDetection": "force",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true
   },
-  "include": ["src", "vite.config.ts"]
+  "include": ["src"]
 }
