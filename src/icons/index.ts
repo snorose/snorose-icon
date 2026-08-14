@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 export { default as IconArrowLeft } from './basic/ic-basic-arrow-left.svg?react';
 export { default as IconArrowCornerDownRight } from './basic/ic-basic-arrow-corner-down-right.svg?react';
 export { default as IconBookFill } from './basic/ic-basic-book-fill.svg?react';
@@ -69,3 +70,50 @@ export { default as IconMultiSkull } from './multi/ic-multi-skull.svg?react';
 export { default as IconMultiUserQuestion } from './multi/ic-multi-user-question.svg?react';
 export { default as IconMultiVideo } from './multi/ic-multi-video.svg?react';
 export { default as IconMultiWarningCone } from './multi/ic-multi-warning-cone.svg?react';
+=======
+export { default as IconArrowLeft } from './assets/basic/ic-basic-arrow-left.svg';
+export { default as IconBookFill } from './assets/basic/ic-basic-book-fill.svg';
+export { default as IconBook } from './assets/basic/ic-basic-book.svg';
+export { default as IconBookmarkFill } from './assets/basic/ic-basic-bookmark-fill.svg';
+export { default as IconBookmark } from './assets/basic/ic-basic-bookmark.svg';
+export { default as IconBuilding } from './assets/basic/ic-basic-building.svg';
+export { default as IconClapperboard } from './assets/basic/ic-basic-clapperboard.svg';
+export { default as IconCommentFill } from './assets/basic/ic-basic-comment-fill.svg';
+export { default as IconEyeFill } from './assets/basic/ic-basic-eye-fill.svg';
+export { default as IconEye } from './assets/basic/ic-basic-eye.svg';
+export { default as IconGripHorizontal } from './assets/basic/ic-basic-grip-horizontal.svg';
+export { default as IconHashtag } from './assets/basic/ic-basic-hashtag.svg';
+export { default as IconHeartFill } from './assets/basic/ic-basic-heart-fill.svg';
+export { default as IconHeart } from './assets/basic/ic-basic-heart.svg';
+export { default as IconInstagram } from './assets/basic/ic-basic-instagram.svg';
+export { default as IconLocation } from './assets/basic/ic-basic-location.svg';
+export { default as IconPencilFill } from './assets/basic/ic-basic-pencil-fill.svg';
+export { default as IconPencilUnderline } from './assets/basic/ic-basic-pencil-underline.svg';
+export { default as IconPersonFill } from './assets/basic/ic-basic-person-fill.svg';
+export { default as IconPerson } from './assets/basic/ic-basic-person.svg';
+export { default as IconTextAlign } from './assets/basic/ic-basic-text-align.svg';
+export { default as IconTrashcanFill } from './assets/basic/ic-basic-trashcan-fill.svg';
+export { default as IconVideo } from './assets/basic/ic-basic-video.svg';
+export { default as IconX } from './assets/basic/ic-basic-x.svg';
+
+export { default as IconMultiBellBlue } from './assets/multiColor/ic-multi-bell-blue.svg';
+export { default as IconMultiBellOff } from './assets/multiColor/ic-multi-bell-off.svg';
+export { default as IconMultiBellPink } from './assets/multiColor/ic-multi-bell-pink.svg';
+export { default as IconMultiClipboardBlue } from './assets/multiColor/ic-multi-clipboard-blue.svg';
+export { default as IconMultiClipboardWhite } from './assets/multiColor/ic-multi-clipboard-white.svg';
+export { default as IconMultiCommentX } from './assets/multiColor/ic-multi-comment-x.svg';
+export { default as IconMultiDollarCircle } from './assets/multiColor/ic-multi-dollar-circle.svg';
+export { default as IconMultiFlag } from './assets/multiColor/ic-multi-flag.svg';
+export { default as IconMultiGestureHand } from './assets/multiColor/ic-multi-gesture-hand.svg';
+export { default as IconMultiImage } from './assets/multiColor/ic-multi-image.svg';
+export { default as IconMultiMassageAlert } from './assets/multiColor/ic-multi-massage-alert.svg';
+export { default as IconMultiPointCircle } from './assets/multiColor/ic-multi-point-circle.svg';
+export { default as IconMultiQuestionCircle } from './assets/multiColor/ic-multi-question-circle.svg';
+export { default as IconMultiSadFace } from './assets/multiColor/ic-multi-sad-face.svg';
+export { default as IconMultiShare } from './assets/multiColor/ic-multi-share.svg';
+export { default as IconMultiShieldOff } from './assets/multiColor/ic-multi-shield-off.svg';
+export { default as IconMultiSkull } from './assets/multiColor/ic-multi-skull.svg';
+export { default as IconMultiUserQuestion } from './assets/multiColor/ic-multi-user-question.svg';
+export { default as IconMultiVideo } from './assets/multiColor/ic-multi-video.svg';
+export { default as IconMultiWarningCone } from './assets/multiColor/ic-multi-warning-cone.svg';
+>>>>>>> Stashed changes
