@@ -12,7 +12,6 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    // "module": "preserve",
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
     "resolveJsonModule": true,
@@ -23,5 +22,5 @@
     "noEmit": true
   },
   "include": ["src"],
-  "exclude": ["src/icons/playground", "src/icons/tests"]
+  "exclude": ["playground"]
 }
