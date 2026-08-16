@@ -28,7 +28,9 @@
   },
   "scripts": {
     "build": "tsdown",
-    "build:watch": "tsdown --watch",
+    "build:watch": "npm run generate:exports && tsdown --watch",
+    "generate:exports": "node scripts/generate-exports.mjs",
+    "prebuild": "npm run generate:exports",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write .",
