@@ -19,6 +19,6 @@ export { default as IllustrationBoxStarsOpen} from './il-box-stars-open.svg';
 export { default as IllustrationBoxStarsCircle} from './il-box-stars-circle.svg';
 export { default as IllustrationFolderSearch } from './il-folder-search.svg';
 export { default as IllustrationSnowfall} from './il-snowfall.svg';
-export { default as IllustrationSnowfallBlueCircle } from './il-snowfall-blue-circle.svg';
+export { default as IllustrationSnowfallCircle } from './il-snowfall-circle.svg';
 export { default as IllustrationFlag } from './il-flag.svg';
 export { default as IllustrationBooksCap } from './il-books-cap.svg';
