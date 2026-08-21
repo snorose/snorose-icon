@@ -15,3 +15,10 @@ export { default as IllustrationSnowGroundCircle } from './il-snow-ground-circle
 export { default as IllustrationSnowGround } from './il-snow-ground.svg';
 export { default as IllustrationSnowMountainCircle } from './il-snow-mountain-circle.svg';
 export { default as IllustrationSnowMountain } from './il-snow-mountain.svg';
+export { default as IllustrationBoxStarsOpen} from './il-box-stars-open.svg';
+export { default as IllustrationBoxStarsCircle} from './il-box-stars-circle.svg';
+export { default as IllustrationFolderSearch } from './il-folder-search.svg';
+export { default as IllustrationSnowfall} from './il-snowfall.svg';
+export { default as IllustrationSnowfallCircle } from './il-snowfall-circle.svg';
+export { default as IllustrationFlag } from './il-flag.svg';
+export { default as IllustrationBooksCap } from './il-books-cap.svg';
