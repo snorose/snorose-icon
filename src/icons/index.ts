@@ -51,7 +51,7 @@ export { default as IconMultiBellBlue } from './multi/ic-multi-bell-blue.svg';
 export { default as IconMultiBellOff } from './multi/ic-multi-bell-off.svg';
 export { default as IconMultiBellPink } from './multi/ic-multi-bell-pink.svg';
 export { default as IconMultiCamera } from './multi/ic-multi-camera.svg';
-export { default as IconMultiCheckCirclePink } from './multi/ic-multi-check-circle-pink.svg';
+export { default as IconMultiCheckPinkCircle } from './multi/ic-multi-check-pink-circle.svg';
 export { default as IconMultiClipboardBlue } from './multi/ic-multi-clipboard-blue.svg';
 export { default as IconMultiClipboardWhite } from './multi/ic-multi-clipboard-white.svg';
 export { default as IconMultiCloudBlack } from './multi/ic-multi-cloud-black.svg';
