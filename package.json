@@ -1,24 +1,80 @@
 {
-  "name": "snorose-icon",
+  "name": "@snorose/icons",
   "version": "0.0.0",
-  "private": true,
   "type": "module",
-  "packageManager": "npm@11.16.0",
-  "scripts": {
-    "dev": "vite --open",
-    "build": "tsc --noEmit && vite build",
-    "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+  "description": "스노로즈 아이콘 패키지 라이브러리",
+  "author": "SNOROSE",
+  "license": "MIT",
+  "keywords": [
+    "snorose",
+    "icons",
+    "react",
+    "svg"
+  ],
+  "homepage": "https://github.com/snorose/snorose-icon#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snorose/snorose-icon"
   },
-  "dependencies": {
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+  "bugs": {
+    "url": "https://github.com/snorose/snorose-icon/issues"
+  },
+  "sideEffects": false,
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "build:watch": "npm run generate:exports && tsdown --watch",
+    "generate:exports": "node scripts/generate-exports.mjs",
+    "prebuild": "npm run generate:exports",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run typecheck && npm run lint && npm run build",
+    "smoke": "node --input-type=module -e \"import('./dist/index.js').then((m) => { for (const key of ['IconSearch', 'IllustrationSnowMountainCircle']) { if (typeof m[key] !== 'function') throw new Error(key + ' export is not a component'); m[key]({}); } })\"",
+    "pack:check": "npm pack --dry-run --cache ./.npm-cache",
+    "ci": "npm run check && npm run smoke && npm run pack:check",
+    "play": "npm run playground",
+    "playground": "vite",
+    "playground:build": "vite build",
+    "playground:preview": "vite preview",
+    "release": "bumpp --no-push",
+    "release:push": "git push --follow-tags",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@svgr/rollup": "^8.1.0",
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/node": "^26.2.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.4",
-    "typescript": "^7.0.2",
+    "@vitejs/plugin-react": "^6.0.3",
+    "bumpp": "^11.1.0",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.7.0",
+    "prettier": "^3.9.6",
+    "tsdown": "^0.22.5",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.65.0",
     "vite": "^8.1.5"
   }
 }
