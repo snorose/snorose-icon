@@ -19,6 +19,18 @@ export default defineConfig({
       exportType: 'default',
       jsxRuntime: 'automatic',
       typescript: true,
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                removeViewBox: false,
+              },
+            },
+          },
+        ],
+      },
     }),
     svgr({
       exclude: 'src/icons/basic/**/*.svg',
@@ -26,6 +38,18 @@ export default defineConfig({
       exportType: 'default',
       jsxRuntime: 'automatic',
       typescript: true,
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                removeViewBox: false,
+              },
+            },
+          },
+        ],
+      },
     }),
   ],
 });
