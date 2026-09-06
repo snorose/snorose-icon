@@ -10,7 +10,6 @@ export { default as IconBook } from './basic/ic-basic-book.svg';
 export { default as IconBookmarkFill } from './basic/ic-basic-bookmark-fill.svg';
 export { default as IconBookmark } from './basic/ic-basic-bookmark.svg';
 export { default as IconBuilding } from './basic/ic-basic-building.svg';
-export { default as IconCheckCircle } from './basic/ic-basic-check-circle.svg';
 export { default as IconCheck } from './basic/ic-basic-check.svg';
 export { default as IconChevronDown } from './basic/ic-basic-chevron-down.svg';
 export { default as IconChevronLeft } from './basic/ic-basic-chevron-left.svg';
