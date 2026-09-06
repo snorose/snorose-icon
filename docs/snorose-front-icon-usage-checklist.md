@@ -61,11 +61,6 @@
   - 사용처:
     - [ ] `src/shared/component/dropdown/DropdownList/DropdownList.jsx`
 
-- [ ] `ic-basic-check-circle.svg` / `IconCheckCircle`
-  - 프론트 id: `check-circle`
-  - 사용처:
-    - [ ] `src/feature/exam/component/ConfirmedIcon/ConfirmedIcon.tsx`
-
 - [ ] `ic-basic-chevron-down.svg` / `IconChevronDown`
   - 프론트 id 후보: `angle-down`, `angle-down-blue`, `arrow-down`
   - 사용처:

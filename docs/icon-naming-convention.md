@@ -183,7 +183,6 @@ ic-basic-arrow-corner-down-right.svg
 ic-basic-arrow-down-left-long-circle-fill.svg
                                 →  IconArrowDownLeftLongCircleFill
 ic-basic-comment-fill.svg       →  IconCommentFill       (fill)
-ic-basic-check-circle.svg       →  IconCheckCircle       (line, 기본)
 
 # 멀티컬러 (multi, 색 하드코딩) — IconMulti 접두사, 스타일 suffix 없음
 ic-multi-bell.svg               →  IconMultiBell
