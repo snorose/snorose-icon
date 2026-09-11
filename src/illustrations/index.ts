@@ -11,7 +11,6 @@ export { default as IllustrationCommentEmpty } from './il-comment-empty.svg';
 export { default as IllustrationEmailCheck } from './il-email-check.svg';
 export { default as IllustrationFlag } from './il-flag.svg';
 export { default as IllustrationFolderSearch } from './il-folder-search.svg';
-export { default as IllustrationMegaphoneBlue } from './il-megaphone-blue.svg';
 export { default as IllustrationMegaphone } from './il-megaphone.svg';
 export { default as IllustrationMicrophone } from './il-microphone.svg';
 export { default as IllustrationNoSales } from './il-no-sales.svg';
