@@ -77,6 +77,7 @@ export { default as IconMultiCheckPinkCircle } from './multi/ic-multi-check-pink
 export { default as IconMultiClipboardBlue } from './multi/ic-multi-clipboard-blue.svg';
 export { default as IconMultiClipboardWhite } from './multi/ic-multi-clipboard-white.svg';
 export { default as IconMultiCloudBlack } from './multi/ic-multi-cloud-black.svg';
+export { default as IconMultiCloudLogo } from './multi/ic-multi-cloud-logo.svg';
 export { default as IconMultiCommentX } from './multi/ic-multi-comment-x.svg';
 export { default as IconMultiExclamationTriangle } from './multi/ic-multi-exclamation-triangle.svg';
 export { default as IconMultiFlag } from './multi/ic-multi-flag.svg';
