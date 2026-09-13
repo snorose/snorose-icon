@@ -14,6 +14,8 @@ SVG 파일을 추가하거나 삭제해도 이 파일들은 자동으로 바뀌�
 
 export가 맞지 않으면 패키지 빌드나 `@snorose/icons`를 사용하는 프로젝트의 import가 깨질 수 있습니다.
 
+로컬 playground 실행과 빌드 결과 확인 절차는 [Playground 반영 안내](./playground-guide.md)를 참고합니다.
+
 ---
 
 ## 2. 실행 시점
