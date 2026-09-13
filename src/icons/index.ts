@@ -54,6 +54,7 @@ export { default as IconPointCircle } from './basic/ic-basic-point-circle.svg';
 export { default as IconRefresh } from './basic/ic-basic-refresh.svg';
 export { default as IconSearch } from './basic/ic-basic-search.svg';
 export { default as IconStarCircleFill } from './basic/ic-basic-star-circle-fill.svg';
+export { default as IconStar } from './basic/ic-basic-star.svg';
 export { default as IconTextAlign } from './basic/ic-basic-text-align.svg';
 export { default as IconTextBold } from './basic/ic-basic-text-bold.svg';
 export { default as IconTextColor } from './basic/ic-basic-text-color.svg';
