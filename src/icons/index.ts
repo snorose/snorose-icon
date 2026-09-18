@@ -3,6 +3,7 @@
 
 export { default as IconArrowCornerDownRight } from './basic/ic-basic-arrow-corner-down-right.svg';
 export { default as IconArrowLeft } from './basic/ic-basic-arrow-left.svg';
+export { default as IconArrowUpRight } from './basic/ic-basic-arrow-up-right.svg';
 export { default as IconBellFill } from './basic/ic-basic-bell-fill.svg';
 export { default as IconBell } from './basic/ic-basic-bell.svg';
 export { default as IconBookFill } from './basic/ic-basic-book-fill.svg';
@@ -53,9 +54,7 @@ export { default as IconPerson } from './basic/ic-basic-person.svg';
 export { default as IconPointCircle } from './basic/ic-basic-point-circle.svg';
 export { default as IconRefresh } from './basic/ic-basic-refresh.svg';
 export { default as IconSearch } from './basic/ic-basic-search.svg';
-export { default as IconStarCircleFill } from './basic/ic-basic-star-circle-fill.svg';
 export { default as IconStar } from './basic/ic-basic-star.svg';
-export { default as IconTextAlign } from './basic/ic-basic-text-align.svg';
 export { default as IconTextBold } from './basic/ic-basic-text-bold.svg';
 export { default as IconTextColor } from './basic/ic-basic-text-color.svg';
 export { default as IconTextStrikethrough } from './basic/ic-basic-text-strikethrough.svg';
