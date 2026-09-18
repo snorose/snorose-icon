@@ -3,6 +3,7 @@
 
 export { default as IconArrowCornerDownRight } from './basic/ic-basic-arrow-corner-down-right.svg';
 export { default as IconArrowLeft } from './basic/ic-basic-arrow-left.svg';
+export { default as IconArrowUpRight } from './basic/ic-basic-arrow-up-right.svg';
 export { default as IconBellFill } from './basic/ic-basic-bell-fill.svg';
 export { default as IconBell } from './basic/ic-basic-bell.svg';
 export { default as IconBookFill } from './basic/ic-basic-book-fill.svg';
