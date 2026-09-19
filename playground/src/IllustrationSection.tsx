@@ -17,7 +17,8 @@ export default function IllustrationSection({
           <Component
             key={name}
             aria-label={name}
-            width={80}
+            width={140}
+            // height="auto"
             height={80}
             onClick={() => onClick(name)}
           />
