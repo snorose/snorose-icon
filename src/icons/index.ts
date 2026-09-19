@@ -16,7 +16,6 @@ export { default as IconCheck } from './basic/ic-basic-check.svg';
 export { default as IconChevronDown } from './basic/ic-basic-chevron-down.svg';
 export { default as IconChevronLeft } from './basic/ic-basic-chevron-left.svg';
 export { default as IconChevronRight } from './basic/ic-basic-chevron-right.svg';
-export { default as IconChevronUpRight } from './basic/ic-basic-chevron-up-right.svg';
 export { default as IconChevronUp } from './basic/ic-basic-chevron-up.svg';
 export { default as IconClapperboard } from './basic/ic-basic-clapperboard.svg';
 export { default as IconCommentFill } from './basic/ic-basic-comment-fill.svg';
