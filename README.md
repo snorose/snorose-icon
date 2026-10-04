@@ -1,8 +1,8 @@
-![스노로즈 구름 로고](src/icons/multi/ic-multi-cloud-logo.svg)
+<img src="src/icons/multi/ic-multi-cloud-logo.svg" alt="스노로즈 구름 로고" width="184" height="120" />
 
 # @snorose/icons
 
-![npm version](https://img.shields.io/npm/v/@snorose/icons?color=ddebf6) ![License](https://img.shields.io/npm/l/@snorose/icons?color=e6f7b1) ![GitHub contributors](https://img.shields.io/github/contributors/snorose/snorose-icon?color=e6f7b1) ![npm downloads](https://img.shields.io/npm/dm/@snorose/icons?color=e6f7b1)
+![npm version](https://img.shields.io/npm/v/@snorose/icons?color=bfd7ec) ![License](https://img.shields.io/npm/l/@snorose/icons?color=e6f7b1) ![GitHub contributors](https://img.shields.io/github/contributors/snorose/snorose-icon?color=e6f7b1) ![npm downloads](https://img.shields.io/npm/dm/@snorose/icons?color=e6f7b1)
 
 스노로즈에서 사용하는 아이콘과 일러스트레이션을 React 컴포넌트 형태로 제공하는 패키지입니다.
 
