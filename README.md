@@ -1,6 +1,12 @@
+![스노로즈 구름 로고](src/icons/multi/ic-multi-cloud-logo.svg)
+
 # @snorose/icons
 
+![npm version](https://img.shields.io/npm/v/@snorose/icons?color=ddebf6) ![License](https://img.shields.io/npm/l/@snorose/icons?color=e6f7b1) ![GitHub contributors](https://img.shields.io/github/contributors/snorose/snorose-icon?color=e6f7b1) ![npm downloads](https://img.shields.io/npm/dm/@snorose/icons?color=e6f7b1)
+
 스노로즈에서 사용하는 아이콘과 일러스트레이션을 React 컴포넌트 형태로 제공하는 패키지입니다.
+
+[아이콘 가이드 (Storybook) ↗](https://storybook.snorose.com/?path=/docs/foundations-iconography--docs)
 
 패키지는 다음 세 종류의 에셋을 제공합니다.
 
@@ -130,3 +136,11 @@ Multi Icon과 Illustration은 자체 색상을 가지므로 일반적으로 `col
 - [@snorose-icons/versioning-convention](docs/package-versioning-convention.md)
 - [@snorose-icons/management](docs/icon-management.md)
 - [@snorose-icons/release](docs/release-guide.md)
+
+## Contributors
+
+![기여자 프로필](https://contrib.rocks/image?repo=snorose/snorose-icon)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
