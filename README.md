@@ -1,4 +1,4 @@
-![스노로즈 구름 로고](src/icons/multi/ic-multi-cloud-logo.svg)
+<img src="src/icons/multi/ic-multi-cloud-logo.svg" alt="스노로즈 구름 로고" width="184" height="120" />
 
 # @snorose/icons
 
