@@ -135,8 +135,6 @@ Multi Icon과 Illustration은 자체 색상을 가지므로 일반적으로 `col
 
 ## Contributors
 
-이 패키지에 기여한 사람들입니다. GitHub 기여 내역을 기준으로 자동 반영됩니다.
-
 [![기여자 프로필](https://contrib.rocks/image?repo=snorose/snorose-icon)](https://github.com/snorose/snorose-icon/graphs/contributors)
 
 ## License
