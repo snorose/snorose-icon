@@ -1,6 +1,7 @@
 # @snorose/icons
 
 [![npm version](https://img.shields.io/npm/v/@snorose/icons)](https://www.npmjs.com/package/@snorose/icons)
+[![License](https://img.shields.io/npm/l/@snorose/icons)](LICENSE) [![GitHub contributors](https://img.shields.io/github/contributors/snorose/snorose-icon)](https://github.com/snorose/snorose-icon/graphs/contributors) [![npm downloads](https://img.shields.io/npm/dm/@snorose/icons)](https://www.npmjs.com/package/@snorose/icons)
 
 스노로즈에서 사용하는 아이콘과 일러스트레이션을 React 컴포넌트 형태로 제공하는 패키지입니다.
 
