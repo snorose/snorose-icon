@@ -70,6 +70,7 @@ export { default as IconMultiBellLightBlue } from './multi/ic-multi-bell-light-b
 export { default as IconMultiBellOff } from './multi/ic-multi-bell-off.svg';
 export { default as IconMultiBellPink } from './multi/ic-multi-bell-pink.svg';
 export { default as IconMultiCheckBlueCircle } from './multi/ic-multi-check-blue-circle.svg';
+export { default as IconMultiCheckBlueGlassCircle } from './multi/ic-multi-check-blue-glass-circle.svg';
 export { default as IconMultiCheckGreenCircle } from './multi/ic-multi-check-green-circle.svg';
 export { default as IconMultiCheckGreyCircle } from './multi/ic-multi-check-grey-circle.svg';
 export { default as IconMultiCheckPinkCircle } from './multi/ic-multi-check-pink-circle.svg';
