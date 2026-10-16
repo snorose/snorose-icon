@@ -22,6 +22,7 @@ export { default as IllustrationGlobe } from './il-globe.svg';
 export { default as IllustrationHallOfFame } from './il-hall-of-fame.svg';
 export { default as IllustrationHeartPill } from './il-heart-pill.svg';
 export { default as IllustrationIceCupBowl } from './il-ice-cup-bowl.svg';
+export { default as IllustrationLipstick } from './il-lipstick.svg';
 export { default as IllustrationLogoAboutSnoroseCloud } from './il-logo-about-snorose-cloud.svg';
 export { default as IllustrationLogoSnoroseCloud } from './il-logo-snorose-cloud.svg';
 export { default as IllustrationLogoSnorose } from './il-logo-snorose.svg';
