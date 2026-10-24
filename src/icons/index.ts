@@ -41,8 +41,6 @@ export { default as IconInstagramFill } from './basic/ic-basic-instagram-fill.sv
 export { default as IconListBullet } from './basic/ic-basic-list-bullet.svg';
 export { default as IconListOrdered } from './basic/ic-basic-list-ordered.svg';
 export { default as IconLocation } from './basic/ic-basic-location.svg';
-export { default as IconMypageFill } from './basic/ic-basic-mypage-fill.svg';
-export { default as IconMypage } from './basic/ic-basic-mypage.svg';
 export { default as IconOpenEditorThick } from './basic/ic-basic-open-editor-thick.svg';
 export { default as IconOpenEditor } from './basic/ic-basic-open-editor.svg';
 export { default as IconPaperclip } from './basic/ic-basic-paperclip.svg';
