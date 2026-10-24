@@ -35,6 +35,7 @@ export { default as IconHashtag } from './basic/ic-basic-hashtag.svg';
 export { default as IconHeartFill } from './basic/ic-basic-heart-fill.svg';
 export { default as IconHeart } from './basic/ic-basic-heart.svg';
 export { default as IconHomeFill } from './basic/ic-basic-home-fill.svg';
+export { default as IconHome } from './basic/ic-basic-home.svg';
 export { default as IconImageFill } from './basic/ic-basic-image-fill.svg';
 export { default as IconImage } from './basic/ic-basic-image.svg';
 export { default as IconInstagramFill } from './basic/ic-basic-instagram-fill.svg';
