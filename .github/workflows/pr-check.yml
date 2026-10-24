@@ -7,6 +7,18 @@ on:
       - dev
 
 jobs:
+  release-check:
+    name: 🚀 Release Automation Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - run: node --test .github/scripts/release.test.mjs
+
   # 1. 타입 검사 (Type Check) Job
   type-check:
     name: 🔍 TypeScript Check
