@@ -3,6 +3,7 @@
 
 export { default as IllustrationBarChartCoins } from './il-bar-chart-coins.svg';
 export { default as IllustrationBellEmpty } from './il-bell-empty.svg';
+export { default as IllustrationBookFemaleSymbol } from './il-book-female-symbol.svg';
 export { default as IllustrationBooksCap } from './il-books-cap.svg';
 export { default as IllustrationBooksCertificate } from './il-books-certificate.svg';
 export { default as IllustrationBookshelf } from './il-bookshelf.svg';
@@ -22,16 +23,19 @@ export { default as IllustrationGlobe } from './il-globe.svg';
 export { default as IllustrationHallOfFame } from './il-hall-of-fame.svg';
 export { default as IllustrationHeartPill } from './il-heart-pill.svg';
 export { default as IllustrationIceCupBowl } from './il-ice-cup-bowl.svg';
+export { default as IllustrationLampVase } from './il-lamp-vase.svg';
 export { default as IllustrationLipstick } from './il-lipstick.svg';
 export { default as IllustrationLogoAboutSnoroseCloud } from './il-logo-about-snorose-cloud.svg';
 export { default as IllustrationLogoSnoroseCloud } from './il-logo-snorose-cloud.svg';
 export { default as IllustrationLogoSnorose } from './il-logo-snorose.svg';
+export { default as IllustrationMegaphone } from './il-megaphone.svg';
 export { default as IllustrationMicrophone } from './il-microphone.svg';
 export { default as IllustrationNoSales } from './il-no-sales.svg';
 export { default as IllustrationNoTicketTransfer } from './il-no-ticket-transfer.svg';
 export { default as IllustrationNotFound } from './il-not-found.svg';
 export { default as IllustrationPadlock } from './il-padlock.svg';
 export { default as IllustrationPawBone } from './il-paw-bone.svg';
+export { default as IllustrationPeopleComments } from './il-people-comments.svg';
 export { default as IllustrationPhoneBooks } from './il-phone-books.svg';
 export { default as IllustrationPostEmpty } from './il-post-empty.svg';
 export { default as IllustrationPotPaper } from './il-pot-paper.svg';
