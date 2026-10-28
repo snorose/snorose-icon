@@ -458,7 +458,7 @@ IconPhoneCall, IconDragMenu
 - [ ] 새 `basic` SVG가 `currentColor`를 사용하는가
 - [ ] 색상을 이름에 넣었다면 **`multi`이고 상태/형태 위치에 있는가?** (`IconMultiCheckPinkCircle`)
 - [ ] SVG 파일명이 `ic-` + `basic`/`multi` + **kebab-case(소문자)**인가 (`ic-basic-arrow-right.svg`)
-- [ ] `npm run generate:exports`로 `src/icons/index.ts`를 갱신했는가
+- [ ] [generate-exports 사용 안내](./generate-exports-guide.md)에 따라 export 갱신과 검증을 완료했는가
 
 ### Illustration 추가
 
@@ -467,7 +467,7 @@ IconPhoneCall, IconDragMenu
 - [ ] SVG 파일명이 `il-` 접두사(소문자)로 시작하는가
 - [ ] 크기는 `width`/`height`로 지정하는가 (`size` 전용 prop 없음)
 - [ ] 고유 색상이 SVG에 하드코딩되어 있는가
-- [ ] `npm run generate:exports`로 `src/illustrations/index.ts`를 갱신했는가
+- [ ] [generate-exports 사용 안내](./generate-exports-guide.md)에 따라 export 갱신과 검증을 완료했는가
 
 ---
 

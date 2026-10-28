@@ -1,0 +1,86 @@
+name: Release Package
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+
+# Never cancel a run after it may have published a package.
+concurrency:
+  group: package-release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    if: >-
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.head.ref == 'dev' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BOT_APP_ID: ${{ secrets.BOT_APP_ID }}
+      BOT_PRIVATE_KEY: ${{ secrets.BOT_PRIVATE_KEY }}
+    steps:
+      - name: Generate bot token when configured
+        if: env.BOT_APP_ID != '' && env.BOT_PRIVATE_KEY != ''
+        id: bot
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+          token: ${{ steps.bot.outputs.token || github.token }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          registry-url: https://registry.npmjs.org
+
+      - name: Install npm with trusted publishing support
+        run: npm install --global npm@11.6.2
+
+      - name: Prepare minor version and release notes
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ steps.bot.outputs.token || github.token }}
+          script: |
+            const { prepare } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
+            await prepare({ github, context, core });
+
+      - run: npm ci
+      - run: node --test .github/scripts/release.test.mjs
+      - run: npm run ci
+
+      - name: Save version commit and tag
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ steps.bot.outputs.token || github.token }}
+          script: |
+            const { persist } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
+            await persist();
+
+      - name: Publish package and GitHub Release
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ steps.bot.outputs.token || github.token }}
+          script: |
+            const { publish } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
+            await publish({ github, context, core });
+
+      - name: Open dev synchronization PR
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ steps.bot.outputs.token || github.token }}
+          script: |
+            const { sync } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
+            await sync({ github, context, core });
