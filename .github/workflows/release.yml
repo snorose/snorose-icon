@@ -17,6 +17,7 @@ permissions:
 
 jobs:
   release:
+    name: 🚀 Release Package
     if: >-
       github.event.pull_request.merged == true &&
       github.event.pull_request.head.ref == 'dev' &&
