@@ -1,6 +1,6 @@
 # VERSIONING
 
-> 현재 기본 배포는 `dev → main` 병합 시 minor 버전·CHANGELOG·GitHub Release·npm 배포를 자동 처리한다.
+> 현재 기본 배포는 `dev → main` 병합 시 minor 버전·CHANGELOG·GitHub Release를 자동 처리하며, npm 배포는 `NPM_PUBLISH_ENABLED=true`일 때만 실행한다.
 > 설정과 복구 방법은 [자동 배포 가이드](release-guide.md)를 따른다. 아래 수동 절차는 major/patch 등 예외 릴리스에 사용한다.
 
 아이콘 패키지(`@snorose/icons`)의 버전 관리 기준과 릴리즈 절차를 정의한다.

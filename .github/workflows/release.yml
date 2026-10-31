@@ -69,13 +69,27 @@ jobs:
             const { persist } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await persist();
 
-      - name: Publish package and GitHub Release
+      - name: Publish npm package
+        if: vars.NPM_PUBLISH_ENABLED == 'true'
+        id: npm-publish
         uses: actions/github-script@v9
         with:
           github-token: ${{ steps.bot.outputs.token || github.token }}
           script: |
             const { publish } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await publish({ github, context, core });
+
+      - name: Create GitHub Release
+        uses: actions/github-script@v9
+        env:
+          NPM_PUBLISHED: ${{ steps.npm-publish.outcome == 'success' }}
+        with:
+          github-token: ${{ steps.bot.outputs.token || github.token }}
+          script: |
+            const { createRelease } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
+            await createRelease({ github, context, core }, {
+              npmPublished: process.env.NPM_PUBLISHED === 'true',
+            });
 
       - name: Open dev synchronization PR
         uses: actions/github-script@v9

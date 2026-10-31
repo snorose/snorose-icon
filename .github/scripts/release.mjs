@@ -197,7 +197,7 @@ export function verifyPublished(published, integrity) {
 }
 
 export async function publish(
-  { github, context, core },
+  { core },
   { npm = (args) => run('npm', args), registry = publishedVersion } = {},
 ) {
   const state = json(statePath());
@@ -224,10 +224,21 @@ export async function publish(
       'https://registry.npmjs.org',
     ]);
   }
+}
+
+export async function createRelease(
+  { github, context, core },
+  { npmPublished = false } = {},
+) {
+  const state = json(statePath());
+  const pkg = json('package.json');
   const release = await optional(() =>
     github.rest.repos.getReleaseByTag({ ...context.repo, tag: state.tag }),
   );
-  const body = `${state.notes}\n\n### npm\n\n\`npm install ${pkg.name}@${state.version}\`\n`;
+  const npmStatus = npmPublished
+    ? `\`npm install ${pkg.name}@${state.version}\``
+    : 'npm 자동 배포를 건너뛰었습니다 (NPM_PUBLISH_ENABLED 비활성).';
+  const body = `${state.notes}\n\n### npm\n\n${npmStatus}\n`;
   if (!release) {
     await github.rest.repos.createRelease({
       ...context.repo,
@@ -292,7 +303,7 @@ export async function sync({ github, context, core }) {
     head: branch,
     base: 'dev',
     title: `chore(release): ${state.tag} 버전 및 릴리스 노트 동기화`,
-    body: `- main에서 배포한 ${state.tag} 버전 및 CHANGELOG.md 반영\n- npm 배포 완료 후 자동 생성\n\nhttps://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/${state.tag}`,
+    body: `- main의 ${state.tag} 버전 및 CHANGELOG.md 반영\n- GitHub Release 생성 후 자동 생성\n\nhttps://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/${state.tag}`,
   });
   core.info(`Merge synchronization PR before the next release: ${pr.html_url}`);
 }

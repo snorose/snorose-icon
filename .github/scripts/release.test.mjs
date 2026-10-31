@@ -14,9 +14,10 @@ import {
   verifyPublished,
   sync,
   publish,
+  createRelease,
 } from './release.mjs';
 
-test('npm publish precedes Release creation; retries skip matching packages and preserve notes', async () => {
+test('npm publish precedes Release creation; retries preserve notes and disabled publishing allows Release creation', async () => {
   const directory = mkdtempSync(join(tmpdir(), 'icons-publish-test-'));
   const before = process.cwd();
   const oldTemp = process.env.RUNNER_TEMP;
@@ -37,6 +38,7 @@ test('npm publish precedes Release creation; retries skip matching packages and 
       }),
     );
     const calls = [];
+    let skipped = false;
     let existing = null;
     let metadata = null;
     let failPublish = false;
@@ -63,6 +65,12 @@ test('npm publish precedes Release creation; retries skip matching packages and 
             calls.push('release');
             assert.equal(options.tag_name, 'v1.4.0');
             assert.match(options.body, /New icon/);
+            if (skipped) {
+              assert.match(options.body, /npm 자동 배포를 건너뛰었습니다/);
+              assert.doesNotMatch(options.body, /npm install/);
+            } else {
+              assert.match(options.body, /npm install @test\/icons@1.4.0/);
+            }
           },
           updateRelease: async () => {
             calls.push('update');
@@ -82,14 +90,17 @@ test('npm publish precedes Release creation; retries skip matching packages and 
       registry: async () => metadata,
     };
     await publish({ github, context, core }, dependencies);
+    await createRelease({ github, context, core }, { npmPublished: true });
     assert.deepEqual(calls, ['pack', 'publish', 'release']);
     calls.length = 0;
     metadata = { dist: { integrity: 'sha512-test' } };
     await publish({ github, context, core }, dependencies);
+    await createRelease({ github, context, core }, { npmPublished: true });
     assert.deepEqual(calls, ['pack', 'release']);
     calls.length = 0;
     existing = { id: 1, body: 'Maintainer edits', draft: false };
     await publish({ github, context, core }, dependencies);
+    await createRelease({ github, context, core }, { npmPublished: true });
     assert.deepEqual(calls, ['pack']);
     calls.length = 0;
     metadata = { dist: { integrity: 'sha512-different' } };
@@ -107,6 +118,10 @@ test('npm publish precedes Release creation; retries skip matching packages and 
       /authentication failed/,
     );
     assert.deepEqual(calls, ['pack', 'publish']);
+    calls.length = 0;
+    skipped = true;
+    await createRelease({ github, context, core });
+    assert.deepEqual(calls, ['release']);
   } finally {
     process.chdir(before);
     if (oldTemp === undefined) delete process.env.RUNNER_TEMP;
