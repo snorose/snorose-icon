@@ -237,7 +237,7 @@ export async function createRelease(
   );
   const npmStatus = npmPublished
     ? `\`npm install ${pkg.name}@${state.version}\``
-    : 'npm 자동 배포를 건너뛰었습니다 (NPM_PUBLISH_ENABLED 비활성).';
+    : 'npm 자동 배포를 건너뛰었습니다 (npm 배포 미완료).';
   const body = `${state.notes}\n\n### npm\n\n${npmStatus}\n`;
   if (!release) {
     await github.rest.repos.createRelease({
@@ -266,6 +266,20 @@ export async function createRelease(
     .write();
 }
 
+export async function enableSyncAutoMerge({ github, core }, pr) {
+  if (pr.auto_merge) return;
+  core.info(`Requesting auto-merge for synchronization PR: ${pr.html_url}`);
+  await github.graphql(
+    `mutation EnableReleaseSyncAutoMerge($pullRequestId: ID!) {
+      enablePullRequestAutoMerge(input: {pullRequestId: $pullRequestId, mergeMethod: SQUASH}) {
+        pullRequest { number }
+      }
+    }`,
+    { pullRequestId: pr.node_id },
+  );
+  core.info(`Auto-merge enabled for synchronization PR: ${pr.html_url}`);
+}
+
 export async function sync({ github, context, core }) {
   const state = json(statePath());
   git('fetch', 'origin', 'dev');
@@ -276,7 +290,12 @@ export async function sync({ github, context, core }) {
     head: `${context.repo.owner}:${branch}`,
     base: 'dev',
   });
-  if (pulls.some((pr) => pr.state === 'open' || pr.merged_at)) return;
+  if (pulls.some((pr) => pr.merged_at)) return;
+  const open = pulls.find((pr) => pr.state === 'open');
+  if (open) {
+    await enableSyncAutoMerge({ github, core }, open);
+    return;
+  }
   // If already integrated, no synchronization PR is needed.
   if (
     ['package.json', 'package-lock.json', 'CHANGELOG.md'].every(
@@ -305,5 +324,5 @@ export async function sync({ github, context, core }) {
     title: `chore(release): ${state.tag} 버전 및 릴리스 노트 동기화`,
     body: `- main의 ${state.tag} 버전 및 CHANGELOG.md 반영\n- GitHub Release 생성 후 자동 생성\n\nhttps://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/${state.tag}`,
   });
-  core.info(`Merge synchronization PR before the next release: ${pr.html_url}`);
+  await enableSyncAutoMerge({ github, core }, pr);
 }
