@@ -18,6 +18,7 @@ permissions:
 jobs:
   release:
     if: >-
+      vars.RELEASE_AUTOMATION_ENABLED == 'true' &&
       github.event.pull_request.merged == true &&
       github.event.pull_request.head.ref == 'dev' &&
       github.event.pull_request.head.repo.full_name == github.repository
@@ -27,19 +28,35 @@ jobs:
       BOT_APP_ID: ${{ secrets.BOT_APP_ID }}
       BOT_PRIVATE_KEY: ${{ secrets.BOT_PRIVATE_KEY }}
     steps:
-      - name: Generate bot token when configured
-        if: env.BOT_APP_ID != '' && env.BOT_PRIVATE_KEY != ''
+      - name: Check bot credentials
+        run: |
+          if [ -z "$BOT_APP_ID" ] || [ -z "$BOT_PRIVATE_KEY" ]; then
+            echo "::error::Configure BOT_APP_ID and BOT_PRIVATE_KEY before enabling release automation."
+            exit 1
+          fi
+
+      - name: Generate bot token
         id: bot
         uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
 
+      - name: Check auto-merge configuration
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ steps.bot.outputs.token }}
+          script: |
+            const { data: repo } = await github.rest.repos.get(context.repo);
+            if (!repo.allow_auto_merge || !repo.allow_squash_merge) {
+              throw new Error('Enable Allow auto-merge and Allow squash merging before enabling release automation.');
+            }
+
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.merge_commit_sha }}
           fetch-depth: 0
-          token: ${{ steps.bot.outputs.token || github.token }}
+          token: ${{ steps.bot.outputs.token }}
 
       - uses: actions/setup-node@v4
         with:
@@ -52,7 +69,7 @@ jobs:
       - name: Prepare minor version and release notes
         uses: actions/github-script@v9
         with:
-          github-token: ${{ steps.bot.outputs.token || github.token }}
+          github-token: ${{ steps.bot.outputs.token }}
           script: |
             const { prepare } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await prepare({ github, context, core });
@@ -64,17 +81,16 @@ jobs:
       - name: Save version commit and tag
         uses: actions/github-script@v9
         with:
-          github-token: ${{ steps.bot.outputs.token || github.token }}
+          github-token: ${{ steps.bot.outputs.token }}
           script: |
             const { persist } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await persist();
 
       - name: Publish npm package
-        if: vars.NPM_PUBLISH_ENABLED == 'true'
         id: npm-publish
         uses: actions/github-script@v9
         with:
-          github-token: ${{ steps.bot.outputs.token || github.token }}
+          github-token: ${{ steps.bot.outputs.token }}
           script: |
             const { publish } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await publish({ github, context, core });
@@ -84,17 +100,17 @@ jobs:
         env:
           NPM_PUBLISHED: ${{ steps.npm-publish.outcome == 'success' }}
         with:
-          github-token: ${{ steps.bot.outputs.token || github.token }}
+          github-token: ${{ steps.bot.outputs.token }}
           script: |
             const { createRelease } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await createRelease({ github, context, core }, {
               npmPublished: process.env.NPM_PUBLISHED === 'true',
             });
 
-      - name: Open dev synchronization PR
+      - name: Open dev synchronization PR and enable auto-merge
         uses: actions/github-script@v9
         with:
-          github-token: ${{ steps.bot.outputs.token || github.token }}
+          github-token: ${{ steps.bot.outputs.token }}
           script: |
             const { sync } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await sync({ github, context, core });
