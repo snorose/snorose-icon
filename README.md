@@ -135,7 +135,7 @@ Multi Icon과 Illustration은 자체 색상을 가지므로 일반적으로 `col
 최초 설정 후 `dev → main` PR을 병합하면 다음 작업이 자동으로 처리됩니다.
 
 - minor 버전 업데이트 및 버전 커밋·태그 생성
-- 패키지 검증 및 npm 배포
+- 패키지 검증 및 `NPM_PUBLISH_ENABLED=true`일 때 npm 배포
 - GitHub 릴리스 노트 생성 및 `CHANGELOG.md` 업데이트
 - dev 동기화 PR 생성
 
