@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   automation:
+    name: 🗂️ Auto Assign and Set Issue Type
     runs-on: ubuntu-latest
     steps:
       - name: Generate Token

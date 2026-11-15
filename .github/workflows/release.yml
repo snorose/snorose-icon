@@ -17,6 +17,7 @@ permissions:
 
 jobs:
   release:
+    name: 🚀 Release Package
     if: >-
       vars.RELEASE_AUTOMATION_ENABLED == 'true' &&
       github.event.pull_request.merged == true &&
