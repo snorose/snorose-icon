@@ -132,15 +132,15 @@ Multi Icon과 Illustration은 자체 색상을 가지므로 일반적으로 `col
 
 ## Release
 
-최초 설정 후 `dev → main` PR을 병합하면 다음 작업이 자동으로 처리됩니다.
+최초 설정 및 `RELEASE_AUTOMATION_ENABLED=true` 활성화 후 `dev → main` PR을 병합하면 다음 작업이 자동으로 처리됩니다.
 
 - minor 버전 업데이트 및 버전 커밋·태그 생성
-- 패키지 검증 및 `NPM_PUBLISH_ENABLED=true`일 때 npm 배포
+- 패키지 검증 및 npm 배포
 - GitHub 릴리스 노트 생성 및 `CHANGELOG.md` 업데이트
-- dev 동기화 PR 생성
+- dev 동기화 PR 생성 및 필수 검사 통과 후 자동 병합
 
 수동 버전 업데이트나 `npm publish` 실행 없이 배포할 수 있습니다.
-생성된 dev 동기화 PR은 다음 배포 전에 병합해 주세요.
+변수가 미설정이거나 `false`이면 릴리스 전체를 건너뜁니다. 동기화 충돌·검사 실패 시 직접 확인해 주세요.
 최초 설정과 재시도 방법은 [배포 가이드](docs/release-guide.md)를 참고해 주세요.
 
 ## Docs

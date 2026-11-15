@@ -15,6 +15,7 @@ import {
   sync,
   publish,
   createRelease,
+  enableSyncAutoMerge,
 } from './release.mjs';
 
 test('npm publish precedes Release creation; retries preserve notes and disabled publishing allows Release creation', async () => {
@@ -233,7 +234,12 @@ test('prepare, atomic push, retry after main advances, and dev synchronization',
     const notes = "## What's Changed\n\n* Added icon in #145";
     let created;
     let generateCalls = 0;
+    let autoMergeCalls = 0;
     const github = {
+      graphql: async (_query, variables) => {
+        assert.equal(variables.pullRequestId, 'sync-pr-id');
+        autoMergeCalls++;
+      },
       rest: {
         repos: {
           generateReleaseNotes: async (options) => {
@@ -243,10 +249,19 @@ test('prepare, atomic push, retry after main advances, and dev synchronization',
           },
         },
         pulls: {
-          list: async () => ({ data: [] }),
+          list: async () => ({
+            data: created
+              ? [{ ...created, state: 'open', node_id: 'sync-pr-id' }]
+              : [],
+          }),
           create: async (options) => {
             created = options;
-            return { data: { html_url: 'https://example.com/pr' } };
+            return {
+              data: {
+                html_url: 'https://example.com/pr',
+                node_id: 'sync-pr-id',
+              },
+            };
           },
         },
       },
@@ -274,6 +289,9 @@ test('prepare, atomic push, retry after main advances, and dev synchronization',
     assert.equal(read('package.json').version, '1.4.0');
     assert.equal(generateCalls, 1);
     await sync({ github, context, core });
+    assert.equal(autoMergeCalls, 1);
+    await sync({ github, context, core });
+    assert.equal(autoMergeCalls, 2);
     assert.equal(created.base, 'dev');
     assert.equal(created.head, 'automation/release-v1.4.0');
     assert.equal(read('package.json').version, '1.4.0');
@@ -288,4 +306,21 @@ test('prepare, atomic push, retry after main advances, and dev synchronization',
     else process.env.npm_config_cache = oldCache;
     rmSync(directory, { recursive: true, force: true });
   }
+});
+
+test('sync auto-merge preserves enabled requests and surfaces permission failures', async () => {
+  const core = { info() {} };
+  const github = {
+    graphql: async () => {
+      throw new Error('Auto-merge denied');
+    },
+  };
+  await enableSyncAutoMerge(
+    { github, core },
+    { auto_merge: { enabled_by: {} } },
+  );
+  await assert.rejects(
+    enableSyncAutoMerge({ github, core }, { node_id: 'sync-pr-id' }),
+    /Auto-merge denied/,
+  );
 });
