@@ -29,21 +29,23 @@ jobs:
       BOT_APP_ID: ${{ secrets.BOT_APP_ID }}
       BOT_PRIVATE_KEY: ${{ secrets.BOT_PRIVATE_KEY }}
     steps:
-      - name: Check bot credentials
+      - name: ① 배포 준비 · 봇 인증 정보 확인
+        id: credentials
         run: |
           if [ -z "$BOT_APP_ID" ] || [ -z "$BOT_PRIVATE_KEY" ]; then
             echo "::error::Configure BOT_APP_ID and BOT_PRIVATE_KEY before enabling release automation."
             exit 1
           fi
 
-      - name: Generate bot token
+      - name: ① 배포 준비 · 봇 토큰 생성
         id: bot
         uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
 
-      - name: Check auto-merge configuration
+      - name: ① 배포 준비 · 자동 병합 설정 확인
+        id: merge-config
         uses: actions/github-script@v9
         with:
           github-token: ${{ steps.bot.outputs.token }}
@@ -53,21 +55,27 @@ jobs:
               throw new Error('Enable Allow auto-merge and Allow squash merging before enabling release automation.');
             }
 
-      - uses: actions/checkout@v4
+      - name: ① 배포 준비 · 소스 가져오기
+        id: checkout
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.merge_commit_sha }}
           fetch-depth: 0
           token: ${{ steps.bot.outputs.token }}
 
-      - uses: actions/setup-node@v4
+      - name: ① 배포 준비 · Node.js 설정
+        id: node
+        uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
           registry-url: https://registry.npmjs.org
 
-      - name: Install npm with trusted publishing support
+      - name: ① 배포 준비 · npm 설정
+        id: npm-setup
         run: npm install --global npm@11.6.2
 
-      - name: Prepare minor version and release notes
+      - name: ②③ 버전 업데이트 및 CHANGELOG 작성
+        id: prepare
         uses: actions/github-script@v9
         with:
           github-token: ${{ steps.bot.outputs.token }}
@@ -75,11 +83,18 @@ jobs:
             const { prepare } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await prepare({ github, context, core });
 
-      - run: npm ci
-      - run: node --test .github/scripts/release.test.mjs
-      - run: npm run ci
+      - name: ④ 패키지 검증 · 의존성 설치
+        id: dependencies
+        run: npm ci
+      - name: ④ 패키지 검증 · 배포 자동화 테스트
+        id: release-tests
+        run: node --test .github/scripts/release.test.mjs
+      - name: ④ 패키지 검증 · 타입 검사·린트·빌드·패키지 확인
+        id: package-check
+        run: npm run ci
 
-      - name: Save version commit and tag
+      - name: ⑤ main에 버전 커밋 및 태그 저장
+        id: persist
         uses: actions/github-script@v9
         with:
           github-token: ${{ steps.bot.outputs.token }}
@@ -87,7 +102,7 @@ jobs:
             const { persist } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await persist();
 
-      - name: Publish npm package
+      - name: ⑥ npm 패키지 게시
         id: npm-publish
         uses: actions/github-script@v9
         with:
@@ -96,7 +111,8 @@ jobs:
             const { publish } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await publish({ github, context, core });
 
-      - name: Create GitHub Release
+      - name: ⑦ GitHub Release 생성
+        id: github-release
         uses: actions/github-script@v9
         env:
           NPM_PUBLISHED: ${{ steps.npm-publish.outcome == 'success' }}
@@ -108,10 +124,47 @@ jobs:
               npmPublished: process.env.NPM_PUBLISHED === 'true',
             });
 
-      - name: Open dev synchronization PR and enable auto-merge
+      - name: ⑧ dev 동기화 PR 생성 및 자동 병합 설정
+        id: sync
         uses: actions/github-script@v9
         with:
           github-token: ${{ steps.bot.outputs.token }}
           script: |
             const { sync } = await import(`${process.env.GITHUB_WORKSPACE}/.github/scripts/release.mjs`);
             await sync({ github, context, core });
+
+      - name: 배포 단계별 결과 요약
+        if: ${{ always() }}
+        continue-on-error: true
+        uses: actions/github-script@v9
+        env:
+          RELEASE_STEPS: ${{ toJSON(steps) }}
+        with:
+          script: |
+            const steps = JSON.parse(process.env.RELEASE_STEPS);
+            const result = (ids) => {
+              const outcomes = ids.map((id) => steps[id]?.outcome ?? 'skipped');
+              if (outcomes.includes('failure')) return '❌ 실패';
+              if (outcomes.includes('cancelled')) return '🛑 취소';
+              if (outcomes.every((outcome) => outcome === 'success')) return '✅ 성공';
+              return '⏭️ 미실행';
+            };
+            const stages = [
+              ['① 배포 준비', ['credentials', 'bot', 'merge-config', 'checkout', 'node', 'npm-setup']],
+              ['② 버전 업데이트', ['prepare']],
+              ['③ CHANGELOG 작성', ['prepare']],
+              ['④ 패키지 검증', ['dependencies', 'release-tests', 'package-check']],
+              ['⑤ main 커밋 및 태그 저장', ['persist']],
+              ['⑥ npm 패키지 게시', ['npm-publish']],
+              ['⑦ GitHub Release 생성', ['github-release']],
+              ['⑧ dev 동기화 PR 및 자동 병합 설정', ['sync']],
+            ];
+            await core.summary
+              .addHeading('배포 단계별 결과')
+              .addTable([
+                [{ data: '단계', header: true }, { data: '결과', header: true }],
+                ...stages.map(([name, ids]) => [name, result(ids)]),
+              ])
+              .addRaw('버전 업데이트와 CHANGELOG 작성은 하나의 Step에서 함께 실행되어 같은 결과로 표시됩니다.\n\n')
+              .addRaw('npm 게시 성공은 게시 명령 완료를 의미하며 레지스트리 공개까지 시간이 걸릴 수 있습니다. dev 동기화 성공은 PR 생성 및 자동 병합 설정 완료를 의미합니다.\n')
+              .write();
