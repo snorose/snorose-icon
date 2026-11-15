@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.8.0]
+
+## What's Changed
+* chore(release): v1.7.0 버전 및 릴리스 노트 동기화 by @snorose-icons-release[bot] in https://github.com/snorose/snorose-icon/pull/170
+* chore(release): 배포 단계 이름 및 실행 결과 요약 표시 by @misung-dev in https://github.com/snorose/snorose-icon/pull/172
+* merge: dev to main (261115 ver.) by @misung-dev in https://github.com/snorose/snorose-icon/pull/173
+
+
+**Full Changelog**: https://github.com/snorose/snorose-icon/compare/v1.7.0...v1.8.0
+
 ## [1.7.0]
 
 ## What's Changed
